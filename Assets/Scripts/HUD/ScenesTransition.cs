@@ -1,9 +1,9 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class ScenesManager : MonoBehaviour
+public class ScenesTransition : MonoBehaviour
 {
-    public static ScenesManager Instance;
+    public static ScenesTransition Instance;
     private void Awake()
     {
         // Singleton pattern

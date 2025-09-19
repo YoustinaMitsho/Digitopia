@@ -1572,7 +1572,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &380761147
 Transform:
   m_ObjectHideFlags: 0
@@ -4121,7 +4121,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &924766517
 Transform:
   m_ObjectHideFlags: 0
@@ -5773,7 +5773,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1259998050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5790,7 +5790,6 @@ MonoBehaviour:
   m_BlackboardVariableOverridesList:
   - rid: 4869262090180231453
   - rid: 4869262090180231455
-  - rid: 4869262090180231836
   m_IsInitialised: 0
   m_IsStarted: 0
   references:
@@ -5830,14 +5829,6 @@ MonoBehaviour:
         - {fileID: 306661545}
         - {fileID: 1748778347}
         - {fileID: 1676766086}
-    - rid: 4869262090180231836
-      type: {class: 'BlackboardVariable`1[[TMPro.TextMeshProUGUI, Unity.TextMeshPro]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 6565109689673837780
-          m_Value1: 11924212176118129794
-        Name: Text
-        m_Value: {fileID: 0}
 --- !u!136 &1259998051
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7178,7 +7169,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1620623104
 Transform:
   m_ObjectHideFlags: 0

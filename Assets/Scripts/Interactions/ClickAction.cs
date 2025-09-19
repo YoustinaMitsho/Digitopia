@@ -11,7 +11,7 @@ public class ClickAction : MonoBehaviour
         {
             Debug.Log("Go to Map");
             clicked = false;
-            ScenesManager.Instance.GoToMap();
+            ScenesTransition.Instance.GoToMap();
         }
     }
 

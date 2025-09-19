@@ -7,7 +7,7 @@ public class TriggerManager : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            ScenesManager.Instance.GoToMap();
+            ScenesTransition.Instance.GoToMap();
         }
     }
 }
