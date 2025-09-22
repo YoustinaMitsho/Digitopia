@@ -13,36 +13,38 @@ public class InBed : MonoBehaviour
     Quaternion AwaketargetRotation = Quaternion.Euler(0f, -90f, 0f);
     [SerializeField] InputAction PressX;
 
-
     void Update()
     {
         if (OnBed)
         {
-         if (PressX.IsPressed())
+            if (PressX.IsPressed())
             {
                 Debug.Log("x is pressed");
                 StandFromBed();
             }
         }
-       
     }
+
+
     void OnEnable()
     {
         gameObject.tag = "bed";
         PressX.Enable();
     }
+
     public void takeAction()
     {
-        
-            if (OnBed)
-            {
-                StandFromBed();
-            }
-            else
-            {
-                SetOnBed();
-            }
+
+        if (OnBed)
+        {
+            StandFromBed();
+        }
+        else
+        {
+            SetOnBed();
+        }
     }
+
     void SetOnBed()
     {
         OnBed = true;
@@ -50,6 +52,7 @@ public class InBed : MonoBehaviour
         transform.SetPositionAndRotation(SleeptargetPosition, SleeptargetRotation);
         LockMovement();
     }
+
     void StandFromBed()
     {
         OnBed = false;
@@ -57,6 +60,7 @@ public class InBed : MonoBehaviour
         transform.SetPositionAndRotation(AwaketargetPosition, AwaketargetRotation);
         UnlockMovement();
     }
+
     void LockMovement()
     {
         GetComponent<FirstPersonMovement>().enabled = false;
@@ -65,6 +69,7 @@ public class InBed : MonoBehaviour
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         GetComponentInChildren<FirstPersonLook>().enabled = false;
     }
+
     void UnlockMovement()
     {
         GetComponent<FirstPersonMovement>().enabled = true;
@@ -75,4 +80,5 @@ public class InBed : MonoBehaviour
                                               | RigidbodyConstraints.FreezeRotationX
                                               | RigidbodyConstraints.FreezeRotationZ;
     }
+    
 }
