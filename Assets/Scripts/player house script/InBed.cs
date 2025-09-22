@@ -16,11 +16,15 @@ public class InBed : MonoBehaviour
 
     void Update()
     {
-        if (PressX.IsPressed())
+        if (OnBed)
         {
-            Debug.Log("x is pressed");
-            StandFromBed();
+         if (PressX.IsPressed())
+            {
+                Debug.Log("x is pressed");
+                StandFromBed();
+            }
         }
+       
     }
     void OnEnable()
     {
