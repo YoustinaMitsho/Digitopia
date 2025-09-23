@@ -1,26 +1,27 @@
 using UnityEngine;
 using DialogueEditor;
 
-public class telephone : MonoBehaviour
+public class Telephone : MonoBehaviour
 {
-    bool IsRinging = true;
+    float ringtime;
+    bool IsRinging;
+
     [SerializeField] NPCConversation WasnotRinging;
     [SerializeField] NPCConversation WasRinging;
+    void OnEnable()
+    {
+        RingingTrue();
+        ringtime = Time.time + Random.Range(20f, 61f);
+
+    }
+    void OnDisable()
+    {
+        RingingFalse();
+
+    }
     void Update()
     {
-        if (IsRinging)
-        {
-            if (Time.time > 60f)
-            {
-                IsRinging = false;
-                Debug.Log("not ringing");
-            }
-            Debug.Log("is ringing");
-        }
-        else
-        {
-            Debug.Log("not ringing");
-        }
+        IfRinging();
     }
     public void CallorPick()
     {
@@ -36,13 +37,24 @@ public class telephone : MonoBehaviour
     public void RingingTrue()
     {
         IsRinging = true;
-        Debug.Log("ringing");
     }
     public void RingingFalse()
     {
         IsRinging = false;
-        Debug.Log("not ringing");
-
-    }   
-     
+    }
+    void IfRinging()
+    {
+        if (IsRinging)
+        {
+            Debug.Log("is ringing");
+            if (Time.time > ringtime)
+            {
+                RingingFalse();
+            }
+        }
+        else
+        {
+            Debug.Log("not ringing");
+        }
+    }
 }

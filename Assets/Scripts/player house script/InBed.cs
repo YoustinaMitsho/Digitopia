@@ -51,7 +51,7 @@ public class InBed : MonoBehaviour
         Debug.Log("you are in bed");
         transform.SetPositionAndRotation(SleeptargetPosition, SleeptargetRotation);
         LockMovement();
-        telephone.GetComponent<telephone>().enabled = false;
+        telephone.GetComponent<Telephone>().enabled = false;
 
     }
 
@@ -61,7 +61,7 @@ public class InBed : MonoBehaviour
         Debug.Log("you are not in bed");
         transform.SetPositionAndRotation(AwaketargetPosition, AwaketargetRotation);
         UnlockMovement();
-        telephone.GetComponent<telephone>().enabled = true;
+        telephone.GetComponent<Telephone>().enabled = true;
 
     }
 
