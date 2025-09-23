@@ -6,11 +6,11 @@ using UnityEngine.InputSystem;
 public class InBed : MonoBehaviour
 {
     bool OnBed;
-    bool skip;
     Vector3 SleeptargetPosition = new Vector3(23.806f, 1.4f, -6.686f);
     Quaternion SleeptargetRotation = Quaternion.Euler(0f, 0f, 90f);
     Vector3 AwaketargetPosition = new Vector3(23.993f, 0.562f, -5.607f);
     Quaternion AwaketargetRotation = Quaternion.Euler(0f, -90f, 0f);
+    [SerializeField] GameObject telephone;
     [SerializeField] InputAction PressX;
 
     void Update()
@@ -28,8 +28,8 @@ public class InBed : MonoBehaviour
 
     void OnEnable()
     {
-        gameObject.tag = "bed";
         PressX.Enable();
+        SetOnBed();
     }
 
     public void takeAction()
@@ -51,6 +51,8 @@ public class InBed : MonoBehaviour
         Debug.Log("you are in bed");
         transform.SetPositionAndRotation(SleeptargetPosition, SleeptargetRotation);
         LockMovement();
+        telephone.GetComponent<telephone>().enabled = false;
+
     }
 
     void StandFromBed()
@@ -59,6 +61,8 @@ public class InBed : MonoBehaviour
         Debug.Log("you are not in bed");
         transform.SetPositionAndRotation(AwaketargetPosition, AwaketargetRotation);
         UnlockMovement();
+        telephone.GetComponent<telephone>().enabled = true;
+
     }
 
     void LockMovement()
