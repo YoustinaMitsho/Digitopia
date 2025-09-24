@@ -1,17 +1,26 @@
 using UnityEngine;
 using DialogueEditor;
+using UnityEngine.InputSystem;
+
 
 public class Telephone : MonoBehaviour
 {
     float ringtime;
     bool IsRinging;
+    bool InHand;
+    [SerializeField] Transform player;
 
     [SerializeField] NPCConversation WasnotRinging;
     [SerializeField] NPCConversation WasRinging;
+    [SerializeField] Vector3 puttingPhoneOffset;
+    [SerializeField] InputAction PressX;
+    Vector3 Playerposition;
+
     void OnEnable()
     {
         RingingTrue();
         ringtime = Time.time + Random.Range(20f, 61f);
+        PressX.Enable();
 
     }
     void OnDisable()
@@ -22,6 +31,8 @@ public class Telephone : MonoBehaviour
     void Update()
     {
         IfRinging();
+        PutThePhone();
+        Playerposition = player.transform.position + puttingPhoneOffset;
     }
     public void CallorPick()
     {
@@ -33,6 +44,10 @@ public class Telephone : MonoBehaviour
         {
             ConversationManager.Instance.StartConversation(WasnotRinging);
         }
+        transform.localScale = new Vector3(0, 0, 0);
+        InHand = true; 
+        
+        
     }
     public void RingingTrue()
     {
@@ -56,5 +71,24 @@ public class Telephone : MonoBehaviour
         {
             Debug.Log("not ringing");
         }
+    }
+    void PutThePhone()
+    {
+
+        if (InHand)
+        {
+            if (PressX.IsPressed())
+            {
+                transform.position = Playerposition;
+                InHand = false;
+                transform.localScale = new Vector3(1, 1, 1);
+
+            }
+            Debug.Log("phone in hand");
+        }
+        else
+        {
+            Debug.Log("phone not in hand");
+        } 
     }
 }

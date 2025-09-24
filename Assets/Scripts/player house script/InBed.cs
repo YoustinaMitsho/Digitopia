@@ -15,14 +15,7 @@ public class InBed : MonoBehaviour
 
     void Update()
     {
-        if (OnBed)
-        {
-            if (PressX.IsPressed())
-            {
-                Debug.Log("x is pressed");
-                StandFromBed();
-            }
-        }
+        StandFromBed();
     }
 
 
@@ -57,12 +50,18 @@ public class InBed : MonoBehaviour
 
     void StandFromBed()
     {
-        OnBed = false;
-        Debug.Log("you are not in bed");
-        transform.SetPositionAndRotation(AwaketargetPosition, AwaketargetRotation);
-        UnlockMovement();
-        telephone.GetComponent<Telephone>().enabled = true;
-
+        if (OnBed)
+        {
+            if (PressX.IsPressed())
+            {
+                Debug.Log("x is pressed");
+                OnBed = false;
+                Debug.Log("you are not in bed");
+                transform.SetPositionAndRotation(AwaketargetPosition, AwaketargetRotation);
+                UnlockMovement();
+                telephone.GetComponent<Telephone>().enabled = true;
+            }
+        }
     }
 
     void LockMovement()
