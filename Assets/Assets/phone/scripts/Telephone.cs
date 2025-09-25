@@ -8,12 +8,14 @@ public class Telephone : MonoBehaviour
     float ringtime;
     bool IsRinging;
     bool InHand;
+    bool lastState; 
     [SerializeField] Transform player;
 
     [SerializeField] NPCConversation WasnotRinging;
     [SerializeField] NPCConversation WasRinging;
     [SerializeField] Vector3 puttingPhoneOffset;
     [SerializeField] InputAction PressX;
+    [SerializeField] AudioSource Ringtonei7;
     Vector3 Playerposition;
 
     void OnEnable()
@@ -32,6 +34,7 @@ public class Telephone : MonoBehaviour
     {
         IfRinging();
         PutThePhone();
+        ringtone();
         Playerposition = player.transform.position + puttingPhoneOffset;
     }
     public void CallorPick()
@@ -45,9 +48,9 @@ public class Telephone : MonoBehaviour
             ConversationManager.Instance.StartConversation(WasnotRinging);
         }
         transform.localScale = new Vector3(0, 0, 0);
-        InHand = true; 
-        
-        
+        InHand = true;
+
+
     }
     public void RingingTrue()
     {
@@ -89,6 +92,18 @@ public class Telephone : MonoBehaviour
         else
         {
             Debug.Log("phone not in hand");
-        } 
+        }
+    }
+    void ringtone()
+    {
+        if (IsRinging && !lastState)
+        {
+            Ringtonei7.Play();
+        }
+        else if (!IsRinging && lastState)
+        {
+            Ringtonei7.Stop();
+        }
+        lastState = IsRinging;
     }
 }
