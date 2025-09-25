@@ -2,7 +2,6 @@ using UnityEngine;
 using DialogueEditor;
 using UnityEngine.InputSystem;
 
-
 public class Telephone : MonoBehaviour
 {
     float ringtime;
@@ -10,25 +9,21 @@ public class Telephone : MonoBehaviour
     bool InHand;
     bool lastState; 
     [SerializeField] Transform player;
-
     [SerializeField] NPCConversation WasnotRinging;
     [SerializeField] NPCConversation WasRinging;
     [SerializeField] Vector3 puttingPhoneOffset;
     [SerializeField] InputAction PressX;
     [SerializeField] AudioSource Ringtonei7;
     Vector3 Playerposition;
-
     void OnEnable()
     {
         RingingTrue();
         ringtime = Time.time + Random.Range(20f, 61f);
         PressX.Enable();
-
     }
     void OnDisable()
     {
         RingingFalse();
-
     }
     void Update()
     {
@@ -49,8 +44,6 @@ public class Telephone : MonoBehaviour
         }
         transform.localScale = new Vector3(0, 0, 0);
         InHand = true;
-
-
     }
     public void RingingTrue()
     {
@@ -77,7 +70,6 @@ public class Telephone : MonoBehaviour
     }
     void PutThePhone()
     {
-
         if (InHand)
         {
             if (PressX.IsPressed())
